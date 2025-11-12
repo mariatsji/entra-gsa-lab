@@ -787,22 +787,21 @@ resource yadaADNSRecordSet 'Microsoft.Network/privateDnsZones/A@2020-06-01' = {
         ipv4Address: ilb.properties.frontendIPConfigurations[0].properties.privateIPAddress
       }     
      ]
-    }
   }
-  resource yadaAAAADNSRecordSet 'Microsoft.Network/privateDnsZones/AAAA@2020-06-01' = {
-    parent: privateDNSZone
-    name: 'yada'
-    properties: {
-      ttl: 3600
-       aaaaRecords: [
-        {
-          ipv6Address: ilb.properties.frontendIPConfigurations[1].properties.privateIPAddress
-        }     
-       ]
-      }
-    }
+}
 
-
+resource yadaAAAADNSRecordSet 'Microsoft.Network/privateDnsZones/AAAA@2020-06-01' = {
+  parent: privateDNSZone
+  name: 'yada'
+  properties: {
+    ttl: 3600
+    aaaaRecords: [
+      {
+        ipv6Address: ilb.properties.frontendIPConfigurations[1].properties.privateIPAddress
+      }     
+    ]
+  }
+}
 
 resource gsaconnectorADNSRecordSet 'Microsoft.Network/privateDnsZones/A@2020-06-01' = {
   parent: privateDNSZone
